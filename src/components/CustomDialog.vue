@@ -54,8 +54,7 @@ const { dialogRef, onDialogOK, onDialogCancel, onDialogHide } =
 function onCancel() {
   todo.value = '';
   props.callback('cancel', todo.value);
-  // onDialogCancel();
-  dialogRef.value.hide();
+  onDialogCancel();
 }
 
 function onAddAnother() {
