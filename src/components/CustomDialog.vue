@@ -1,5 +1,5 @@
 <template>
-  <q-dialog ref="dialogRef" @hide="onDialogHide">
+  <q-dialog ref="dialogRef" @hide="onDialogHide" seamless persistent>
     <q-card class="q-dialog-plugin">
       <q-card-section>
         <div class="text-h6">Add item</div>
