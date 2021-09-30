@@ -1,5 +1,5 @@
 <template>
-  <q-dialog ref="dialogRef" @hide="hide" seamless persistent>
+  <q-dialog ref="dialogRef" @hide="onDialogHide" seamless persistent>
     <q-card class="q-dialog-plugin">
       <q-card-section>
         <div class="text-h6">Add item</div>
@@ -42,37 +42,20 @@ const props = defineProps({
     required: true,
   },
 });
-const emit = defineEmits([
-  // REQUIRED; need to specify some events that your
-  // component will emit through useDialogPluginComponent()
-  ...useDialogPluginComponent.emits,
-]);
+const emits = defineEmits([...useDialogPluginComponent.emits]);
 
 const todo = ref(''),
   input = ref(null),
   q$ = useQuasar();
 
-// const dialogRef = useDialogPluginComponent().dialogRef;
-// const onDialogHide = useDialogPluginComponent().onDialogHide;
-
-const { dialogRef, onDialogOK, onDialogCancel } = useDialogPluginComponent();
-
-console.log('dialogRef', dialogRef);
-// console.log('dialogHide', onDialogHide);
-console.log('useDialogPluginComponent', useDialogPluginComponent);
-
-// defineExpose({
-//   dialogRef,
-//   onDialogHide,
-//   onDialogOK,
-//   onDialogCancel,
-// });
+const { dialogRef, onDialogOK, onDialogCancel, onDialogHide } =
+  useDialogPluginComponent();
 
 function onCancel() {
   todo.value = '';
   props.callback('cancel', todo.value);
-  // useDialogPluginComponent().onDialogCancel();
-  onDialogCancel();
+  // onDialogCancel();
+  dialogRef.value.hide();
 }
 
 function onAddAnother() {
@@ -83,14 +66,7 @@ function onAddAnother() {
 
 function onAdd() {
   props.callback('add', todo.value);
-  // useDialogPluginComponent().onDialogOK();
   onDialogOK();
-}
-
-function hide() {
-  console.log('called hide', dialogRef.value);
-  dialogRef.value.hide();
-  useDialogPluginComponent().onDialogHide();
 }
 
 const color = computed(() => {
