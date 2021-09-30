@@ -48,8 +48,11 @@ const todo = ref(''),
   input = ref(null),
   q$ = useQuasar();
 
-const { dialogRef, onDialogOK, onDialogCancel, onDialogHide } =
-  useDialogPluginComponent();
+const { dialogRef, onDialogOK, onDialogCancel } = useDialogPluginComponent();
+console.log('emits', emit);
+function onDialogHide() {
+  emit('hide');
+}
 
 function onCancel() {
   todo.value = '';
