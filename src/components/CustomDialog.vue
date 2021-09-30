@@ -89,6 +89,7 @@ function onAdd() {
 }
 
 function hide() {
+  dialogRef.value.hide();
   onDialogHide();
 }
 
