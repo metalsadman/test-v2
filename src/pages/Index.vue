@@ -17,16 +17,18 @@ import AddItemDialog from 'components/CustomDialog.vue';
 const q$ = useQuasar();
 const activeDialog = ref(null);
 
-activeDialog.value = q$.dialog({
-  component: AddItemDialog,
-  componentProps: {
-    callback: (btnClicked, input) => {
-      if (btnClicked === 'cancel') {
-        activeDialog.value = null;
-        return;
-      }
-      //do something...
+function testDialog() {
+  activeDialog.value = q$.dialog({
+    component: AddItemDialog,
+    componentProps: {
+      callback: (btnClicked, input) => {
+        if (btnClicked === 'cancel') {
+          activeDialog.value = null;
+          return;
+        }
+        //do something...
+      },
     },
-  },
-});
+  });
+}
 </script>

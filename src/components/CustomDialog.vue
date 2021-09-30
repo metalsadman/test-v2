@@ -61,7 +61,8 @@ const emits = defineEmits([
 ]);
 const todo = ref(''),
   input = ref(null),
-  $q = useQuasar();
+  q$ = useQuasar();
+
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
   useDialogPluginComponent();
 
@@ -93,6 +94,6 @@ function onOKClick() {
 const onCancelClick = onDialogCancel;
 
 const color = computed(() => {
-  return $q.dark.isActive ? 'warning' : 'primary';
+  return q$.dark.isActive ? 'warning' : 'primary';
 });
 </script>
