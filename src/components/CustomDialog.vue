@@ -51,18 +51,16 @@ const todo = ref(''),
   input = ref(null),
   q$ = useQuasar();
 
-const dialogRef = useDialogPluginComponent().dialogRef;
-const onDialogHide = useDialogPluginComponent().onDialogHide;
+// const dialogRef = useDialogPluginComponent().dialogRef;
+// const onDialogHide = useDialogPluginComponent().onDialogHide;
+
+const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
+  useDialogPluginComponent();
 
 console.log('dialogRef', dialogRef.value);
 console.log('dialogHide', onDialogHide);
-// const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
-//   useDialogPluginComponent();
+console.log('useDialogPluginComponent', useDialogPluginComponent);
 
-defineExpose({
-  dialogRef,
-  onDialogHide,
-});
 // defineExpose({
 //   dialogRef,
 //   onDialogHide,
@@ -73,7 +71,8 @@ defineExpose({
 function onCancel() {
   todo.value = '';
   props.callback('cancel', todo.value);
-  useDialogPluginComponent().onDialogCancel();
+  // useDialogPluginComponent().onDialogCancel();
+  onDialogCancel();
 }
 
 function onAddAnother() {
@@ -84,7 +83,8 @@ function onAddAnother() {
 
 function onAdd() {
   props.callback('add', todo.value);
-  useDialogPluginComponent().onDialogOK();
+  // useDialogPluginComponent().onDialogOK();
+  onDialogOK();
 }
 
 const color = computed(() => {
