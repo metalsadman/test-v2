@@ -59,6 +59,10 @@ console.log('dialogHide', onDialogHide);
 // const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
 //   useDialogPluginComponent();
 
+defineExpose({
+  dialogRef,
+  onDialogHide,
+});
 // defineExpose({
 //   dialogRef,
 //   onDialogHide,
