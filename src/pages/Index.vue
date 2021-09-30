@@ -1,12 +1,20 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    />
-    <q-btn label="Test Dialog" @click="testDialog" />
-    <q-btn label="Close Dialog" @click="closeDialog" />
+  <q-page>
+    <div class="column">
+      <div class="col">
+        <img
+          alt="Quasar logo"
+          src="~assets/quasar-logo-vertical.svg"
+          style="width: 200px; height: 200px"
+        />
+      </div>
+      <div class="col">
+        <q-btn label="Test Dialog" @click="testDialog" />
+      </div>
+      <div class="col">
+        <q-btn label="Close Dialog" @click="closeDialog" />
+      </div>
+    </div>
   </q-page>
 </template>
 
