@@ -58,7 +58,7 @@ const todo = ref(''),
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
   useDialogPluginComponent();
 
-console.log('dialogRef', dialogRef;
+console.log('dialogRef', dialogRef);
 console.log('dialogHide', onDialogHide);
 console.log('useDialogPluginComponent', useDialogPluginComponent);
 
@@ -89,7 +89,7 @@ function onAdd() {
 }
 
 function hide() {
-  onDialogHide()
+  onDialogHide();
 }
 
 const color = computed(() => {
@@ -97,6 +97,6 @@ const color = computed(() => {
 });
 
 onMounted(() => {
-  console.log('mounted', dialogRef.value)
-})
+  console.log('mounted', dialogRef.value);
+});
 </script>
