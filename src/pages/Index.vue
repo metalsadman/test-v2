@@ -42,6 +42,7 @@ function testDialog() {
       },
     },
   });
+  console.log('testDialog1', activeDialog.value);
 }
 
 function testDialog2() {
@@ -57,6 +58,8 @@ function testDialog2() {
       },
     },
   });
+
+  console.log('testDialog2', activeDialog.value);
 }
 
 function closeDialog() {
