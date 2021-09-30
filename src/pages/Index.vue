@@ -29,8 +29,19 @@ const q$ = useQuasar();
 const activeDialog = ref(null);
 
 function testDialog() {
-  activeDialog.value = q$.dialog({
-    component: AddItemDialog,
+  activeDialog.value = createDialog(AddItemDialog);
+  console.log('testDialog1', activeDialog.value);
+}
+
+function testDialog2() {
+  activeDialog.value = createDialog(AddItemDialog2);
+
+  console.log('testDialog2', activeDialog.value);
+}
+
+function createDialog(customComponent) {
+  return q$.dialog({
+    component: customComponent,
     componentProps: {
       callback: (btnClicked, input) => {
         if (btnClicked === 'cancel') {
@@ -42,24 +53,6 @@ function testDialog() {
       },
     },
   });
-  console.log('testDialog1', activeDialog.value);
-}
-
-function testDialog2() {
-  activeDialog.value = q$.dialog({
-    component: AddItemDialog2,
-    componentProps: {
-      callback: (btnClicked, input) => {
-        if (btnClicked === 'cancel') {
-          activeDialog.value = null;
-          return;
-        }
-        //do something...
-      },
-    },
-  });
-
-  console.log('testDialog2', activeDialog.value);
 }
 
 function closeDialog() {

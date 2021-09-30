@@ -34,7 +34,7 @@
 
 <script setup>
 import { useDialogPluginComponent, useQuasar } from 'quasar';
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const props = defineProps({
   callback: {
@@ -58,7 +58,7 @@ const todo = ref(''),
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
   useDialogPluginComponent();
 
-console.log('dialogRef', dialogRef.value);
+console.log('dialogRef', dialogRef;
 console.log('dialogHide', onDialogHide);
 console.log('useDialogPluginComponent', useDialogPluginComponent);
 
@@ -88,7 +88,15 @@ function onAdd() {
   onDialogOK();
 }
 
+function hide() {
+  onDialogHide()
+}
+
 const color = computed(() => {
   return q$.dark.isActive ? 'warning' : 'primary';
 });
+
+onMounted(() => {
+  console.log('mounted', dialogRef.value)
+})
 </script>
