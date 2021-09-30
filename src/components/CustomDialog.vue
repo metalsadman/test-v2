@@ -19,26 +19,14 @@
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn
-          flat
-          label="Cancel"
-          :color="color"
-          @click="onCancel"
-          v-close-popup
-        ></q-btn>
+        <q-btn flat label="Cancel" :color="color" @click="onCancel"></q-btn>
         <q-btn
           flat
           label="Add another"
           :color="color"
           @click="onAddAnother"
         ></q-btn>
-        <q-btn
-          flat
-          label="Add"
-          :color="color"
-          @click="onAdd"
-          v-close-popup
-        ></q-btn>
+        <q-btn flat label="Add" :color="color" @click="onAdd"></q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -63,19 +51,22 @@ const todo = ref(''),
   input = ref(null),
   q$ = useQuasar();
 
-const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
-  useDialogPluginComponent();
+const dialogRef = useDialogPluginComponent().dialogRef;
+const onDialogHide = useDialogPluginComponent().onDialogHide;
+// const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
+//   useDialogPluginComponent();
 
-defineExpose({
-  dialogRef,
-  onDialogHide,
-  onDialogOK,
-  onDialogCancel,
-});
+// defineExpose({
+//   dialogRef,
+//   onDialogHide,
+//   onDialogOK,
+//   onDialogCancel,
+// });
 
 function onCancel() {
   todo.value = '';
   props.callback('cancel', todo.value);
+  useDialogPluginComponent().onDialogCancel();
 }
 
 function onAddAnother() {
@@ -86,19 +77,8 @@ function onAddAnother() {
 
 function onAdd() {
   props.callback('add', todo.value);
+  useDialogPluginComponent().onDialogOK();
 }
-
-function onOKClick() {
-  // on OK, it is REQUIRED to
-  // call onDialogOK (with optional payload)
-  // console.log('onok');
-  onDialogOK();
-  // or with payload: onDialogOK({ ... })
-  // ...and it will also hide the dialog automatically
-}
-
-// we can passthrough onDialogCancel directly
-const onCancelClick = onDialogCancel;
 
 const color = computed(() => {
   return q$.dark.isActive ? 'warning' : 'primary';

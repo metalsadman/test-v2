@@ -19,26 +19,14 @@
       </q-card-section>
 
       <q-card-actions align="right">
-        <q-btn
-          flat
-          label="Cancel"
-          :color="color"
-          @click="onCancel"
-          v-close-popup
-        ></q-btn>
+        <q-btn flat label="Cancel" :color="color" @click="onCancel"></q-btn>
         <q-btn
           flat
           label="Add another"
           :color="color"
           @click="onAddAnother"
         ></q-btn>
-        <q-btn
-          flat
-          label="Add"
-          :color="color"
-          @click="onAdd"
-          v-close-popup
-        ></q-btn>
+        <q-btn flat label="Add" :color="color" @click="onAdd"></q-btn>
       </q-card-actions>
     </q-card>
   </q-dialog>
@@ -60,7 +48,7 @@ export default defineComponent({
     // component will emit through useDialogPluginComponent()
     ...useDialogPluginComponent.emits,
   ],
-  setup() {
+  setup(props) {
     const todo = ref(''),
       input = ref(null),
       q$ = useQuasar();
@@ -71,6 +59,7 @@ export default defineComponent({
     function onCancel() {
       todo.value = '';
       props.callback('cancel', todo.value);
+      onDialogCancel();
     }
 
     function onAddAnother() {
@@ -81,15 +70,7 @@ export default defineComponent({
 
     function onAdd() {
       props.callback('add', todo.value);
-    }
-
-    function onOKClick() {
-      // on OK, it is REQUIRED to
-      // call onDialogOK (with optional payload)
-      // console.log('onok');
       onDialogOK();
-      // or with payload: onDialogOK({ ... })
-      // ...and it will also hide the dialog automatically
     }
 
     const color = computed(() => {
@@ -100,8 +81,6 @@ export default defineComponent({
       onCancel,
       color,
       onAdd,
-      onOKClick,
-      onCancelClick: onDialogCancel,
       dialogRef,
       onDialogHide,
       todo,
