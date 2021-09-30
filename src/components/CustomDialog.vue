@@ -42,7 +42,7 @@ const props = defineProps({
     required: true,
   },
 });
-const emits = defineEmits([...useDialogPluginComponent.emits]);
+const emit = defineEmits(useDialogPluginComponent.emits);
 
 const todo = ref(''),
   input = ref(null),
