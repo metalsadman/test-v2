@@ -46,7 +46,7 @@
 
 <script setup>
 import { useDialogPluginComponent, useQuasar } from 'quasar';
-import { ref, computed, defineProps, defineEmits } from 'vue';
+import { ref, computed } from 'vue';
 
 const props = defineProps({
   callback: {
@@ -65,6 +65,13 @@ const todo = ref(''),
 
 const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
   useDialogPluginComponent();
+
+defineExpose({
+  dialogRef,
+  onDialogHide,
+  onDialogOK,
+  onDialogCancel,
+});
 
 function onCancel() {
   todo.value = '';

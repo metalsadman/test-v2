@@ -9,8 +9,8 @@
         />
       </div>
       <div class="col">
-        <q-btn label="Test Dialog" @click="testDialog" />
-        <q-btn label="Test Dialog Non Script setup" @click="testDialog2" />
+        <q-btn label="Test Dialog w/ script setup" @click="testDialog" />
+        <q-btn label="Test Dialog w/o Script setup" @click="testDialog2" />
       </div>
       <div class="col">
         <q-btn label="Close Dialog" @click="closeDialog" />
