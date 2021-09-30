@@ -53,6 +53,9 @@ const todo = ref(''),
 
 const dialogRef = useDialogPluginComponent().dialogRef;
 const onDialogHide = useDialogPluginComponent().onDialogHide;
+
+console.log('dialogRef', dialogRef.value);
+console.log('dialogHide', onDialogHide);
 // const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
 //   useDialogPluginComponent();
 
