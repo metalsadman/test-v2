@@ -56,6 +56,8 @@ export default defineComponent({
     const { dialogRef, onDialogHide, onDialogOK, onDialogCancel } =
       useDialogPluginComponent();
 
+    console.log('dialogRef', dialogRef.value);
+
     function onCancel() {
       todo.value = '';
       props.callback('cancel', todo.value);
