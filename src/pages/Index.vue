@@ -4,14 +4,30 @@
       alt="Quasar logo"
       src="~assets/quasar-logo-vertical.svg"
       style="width: 200px; height: 200px"
-    >
+    />
+    sdfsdfsd
+    <q-btn label="Test Dialog" @click="testDialog" />
   </q-page>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup>
+import { useQuasar } from 'quasar';
+import { ref } from 'vue';
+import AddItemDialog from 'components/CustomDialog.vue';
 
-export default defineComponent({
-  name: 'PageIndex'
-})
+const q$ = useQuasar();
+const activeDialog = ref(null);
+
+activeDialog.value = q$.dialog({
+  component: AddItemDialog,
+  componentProps: {
+    callback: (btnClicked, input) => {
+      if (btnClicked === 'cancel') {
+        activeDialog.value = null;
+        return;
+      }
+      //do something...
+    },
+  },
+});
 </script>
