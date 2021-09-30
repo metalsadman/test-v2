@@ -6,6 +6,7 @@
       style="width: 200px; height: 200px"
     />
     <q-btn label="Test Dialog" @click="testDialog" />
+    <q-btn label="Close Dialog" @click="closeDialog" />
   </q-page>
 </template>
 
@@ -30,5 +31,9 @@ function testDialog() {
       },
     },
   });
+}
+
+function closeDialog() {
+  activeDialog.value.hide();
 }
 </script>
