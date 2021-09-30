@@ -10,6 +10,7 @@
       </div>
       <div class="col">
         <q-btn label="Test Dialog" @click="testDialog" />
+        <q-btn label="Test Dialog Non Script setup" @click="testDialog2" />
       </div>
       <div class="col">
         <q-btn label="Close Dialog" @click="closeDialog" />
@@ -22,6 +23,7 @@
 import { useQuasar } from 'quasar';
 import { ref } from 'vue';
 import AddItemDialog from 'components/CustomDialog.vue';
+import AddItemDialog2 from 'components/CustomDialogCompo.vue';
 
 const q$ = useQuasar();
 const activeDialog = ref(null);
@@ -29,6 +31,21 @@ const activeDialog = ref(null);
 function testDialog() {
   activeDialog.value = q$.dialog({
     component: AddItemDialog,
+    componentProps: {
+      callback: (btnClicked, input) => {
+        if (btnClicked === 'cancel') {
+          activeDialog.value = null;
+          return;
+        }
+        //do something...
+      },
+    },
+  });
+}
+
+function testDialog2() {
+  activeDialog.value = q$.dialog({
+    component: AddItemDialog2,
     componentProps: {
       callback: (btnClicked, input) => {
         if (btnClicked === 'cancel') {

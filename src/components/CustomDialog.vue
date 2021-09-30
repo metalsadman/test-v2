@@ -46,7 +46,7 @@
 
 <script setup>
 import { useDialogPluginComponent, useQuasar } from 'quasar';
-import { ref, computed } from 'vue';
+import { ref, computed, defineProps, defineEmits } from 'vue';
 
 const props = defineProps({
   callback: {
