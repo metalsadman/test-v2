@@ -51,6 +51,7 @@ const todo = ref(''),
 const { dialogRef, onDialogOK, onDialogCancel } = useDialogPluginComponent();
 console.log('emits', emit);
 function onDialogHide() {
+  console.log('call onhideDIalog');
   emit('hide');
 }
 
