@@ -27,7 +27,6 @@ const q$ = useQuasar();
 const activeDialog = ref(null);
 
 function testDialog() {
-  if (!activeDialog.value) return;
   activeDialog.value = q$.dialog({
     component: AddItemDialog,
     componentProps: {
