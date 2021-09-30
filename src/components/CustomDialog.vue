@@ -88,6 +88,7 @@ function onAdd() {
 }
 
 function hide() {
+  console.log('called hide', dialogRef.value);
   dialogRef.value.hide();
   useDialogPluginComponent().onDialogHide();
 }
