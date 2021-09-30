@@ -58,7 +58,7 @@ const todo = ref(''),
 const { dialogRef, onDialogOK, onDialogCancel } = useDialogPluginComponent();
 
 console.log('dialogRef', dialogRef);
-console.log('dialogHide', onDialogHide);
+// console.log('dialogHide', onDialogHide);
 console.log('useDialogPluginComponent', useDialogPluginComponent);
 
 // defineExpose({
