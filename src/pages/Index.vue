@@ -34,6 +34,7 @@ function testDialog() {
     componentProps: {
       callback: (btnClicked, input) => {
         if (btnClicked === 'cancel') {
+          console.log('callBack called cancel');
           activeDialog.value = null;
           return;
         }
@@ -59,6 +60,7 @@ function testDialog2() {
 }
 
 function closeDialog() {
+  console.log('closeDialog', activeDialog.value);
   activeDialog.value.hide();
 }
 </script>
